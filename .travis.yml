@@ -1,6 +1,8 @@
 language: android
 jdk: oraclejdk8
 sudo: false
+notification: 
+  email: false
 install:
 - echo y | android update sdk -u -a -t tools
 - echo y | android update sdk -u -a -t platform-tools
@@ -19,4 +21,5 @@ android:
   - 'android-sdk-license-.+'
   - '.+'
 script:
-- ./gradlew test
+- ./gradlew clean
+- ./gradlew build connectedCheck
