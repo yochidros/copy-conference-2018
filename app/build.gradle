@@ -1,0 +1,106 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+// Manifest version
+def versionMajor = 0
+def versionMinor = 1
+def versionPatch = 0
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    dataBinding {
+        enabled = true
+    }
+    defaultConfig {
+        applicationId "com.yochio.copy_conference2018"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName "$versionMajor.$versionMinor.$versionPatch"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+kapt {
+    useBuildCache = true
+}
+
+dependencies {
+    implementation project(':model')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // Kotlin
+    implementation depends.kotlin.stdlib
+
+    // Support Library
+    implementation depends.supportLibrary.support
+    implementation depends.supportLibrary.design
+    implementation depends.supportLibrary.appCompat
+    implementation depends.supportLibrary.cardview
+    implementation depends.supportLibrary.constraint
+    implementation depends.supportLibrary.preference
+    implementation depends.supportLibrary.preferenceV14
+
+    // Network
+    implementation depends.okhttp3.loggingIntercepter
+
+    implementation depends.retrofit.core
+    implementation depends.retrofit.converterMoshi
+    implementation depends.retrofit.adapterRxJava2
+
+    // Structure
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    kapt depends.binding.compiler
+
+    implementation depends.kotshi.api
+    kapt depends.kotshi.compiler
+
+    implementation depends.lifecycle.runtime
+    implementation depends.lifecycle.extensions
+    implementation depends.lifecycle.reactivestreams
+
+    implementation depends.room.runtime
+    implementation depends.room.rxjava2
+    kapt depends.room.compiler
+
+    implementation depends.dagger.core
+    implementation depends.dagger.android
+    implementation depends.dagger.androidSupport
+    kapt depends.dagger.compiler
+    kapt depends.dagger.androidProcessor
+
+    implementation depends.rxjava2.core
+    implementation depends.rxjava2.android
+    implementation depends.rxjava2.kotlin
+
+    implementation depends.threetenabp
+
+    // UI
+
+    implementation depends.glide.core
+    implementation depends.glide.okhttp3
+    kapt depends.glide.compiler
+
+    implementation depends.groupie.core
+    implementation depends.groupie.binding
+
+    // Unit Test
+    testImplementation depends.junit
+    androidTestImplementation depends.supporttest.runner
+    androidTestImplementation depends.supporttest.espresso
+}
+
+repositories {
+    mavenCentral()
+}

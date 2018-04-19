@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data></data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/sessions_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/day_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:targetApi="lollipop"
+            android:text="DAY1"
+            />
+
+        <ImageView
+            android:id="@+id/mysession_inactive_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:adjustViewBounds="false"
+            android:contentDescription="@string/favorite_content_description_not_found"
+            app:layout_constraintBottom_toTopOf="@+id/mysession_inactive_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:srcCompat="@drawable/ic_mysession_inactive" />
+
+        <TextView
+            android:id="@+id/mysession_inactive_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/favorite_not_found_title"
+            app:layout_constraintTop_toBottomOf="@+id/mysession_inactive_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/mysession_inactive_detail"
+            app:layout_constraintHorizontal_bias="0.5"
+            />
+
+        <TextView
+            android:id="@+id/mysession_inactive_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="@string/favorite_not_found_detail"
+            app:layout_constraintTop_toBottomOf="@+id/mysession_inactive_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <android.support.constraint.Group
+            android:id="@+id/mysession_inactive_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="mysession_inactive_title, mysession_inactive_image, mysession_inactive_detail"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
